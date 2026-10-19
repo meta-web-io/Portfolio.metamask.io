@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#08080b" />
+<title>Wallet Server — MetaMask Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mainportfolio.css" />
+</head>
+<body>
+
+<svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <symbol id="i-fox" viewBox="0 0 32 32">
+    <path d="M29.2 4.1 17.8 12.6l2.1-5 9.3-3.5Z" fill="#E2761B"/>
+    <path d="M2.8 4.1 14.1 12.7l-2-5.1L2.8 4.1Z" fill="#E4761B"/>
+    <path d="M25.1 21.9l-3.1 4.8 6.7 1.8 1.9-6.5-5.5-.1ZM1.4 22l1.9 6.5 6.7-1.8-3.1-4.8-5.5.1Z" fill="#E4761B"/>
+    <path d="M17.5 17.3l.4-6.7 1.8-4.9h-8l1.8 4.9.4 6.7.2 2.1v5.4h2.8v-5.4l.6-2.1Z" fill="#F6851B"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5 8.6 8.6 0 1 0 20.5 14.6Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.4" fill="none" stroke="currentColor" stroke-width="2"/><path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19V5M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7.5 15.5 11 11l3 3 5-6.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H18a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><rect x="3" y="7.5" width="18" height="12.5" rx="2.6" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="16.8" cy="13.8" r="1.5" fill="currentColor"/></symbol>
+  <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h13l-3.2-3.4M20 16H7l3.2 3.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-bridge" viewBox="0 0 24 24"><path d="M2 17h20M4 17V9M20 17V9M4 9c0-2.6 3.6-4.6 8-4.6s8 2 8 4.6M8 17V10.5M12 17V9.4M16 17v-6.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-nft" viewBox="0 0 24 24"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="3.4" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="9" cy="9.2" r="1.7" fill="currentColor"/><path d="m4.4 18 4.6-5 3.4 3.4 2.8-2.6 4 4.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-7 16-2.4-6.6L4 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-recv" viewBox="0 0 24 24"><path d="M12 4v14m0 0-5-5m5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.6 4.6 4.4L19 6.8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.6" y="8.6" width="11.4" height="11.4" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M15.4 8.6V6.4a2.4 2.4 0 0 0-2.4-2.4H6.4A2.4 2.4 0 0 0 4 6.4v6.6a2.4 2.4 0 0 0 2.4 2.4h2.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-bnb" viewBox="0 0 24 24"><path d="M12 3.2 15 6.2l-3 3-3-3 3-3Z" fill="currentColor"/><path d="M6.6 8.6l3 3-3 3-3-3 3-3ZM17.4 8.6l3 3-3 3-3-3 3-3Z" fill="currentColor"/><path d="M12 14.8l3 3-3 3-3-3 3-3Z" fill="currentColor"/><path d="M12 9.4l2.6 2.6L12 14.6 9.4 12 12 9.4Z" fill="currentColor"/></symbol>
+  <symbol id="i-usdt" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#26A17B"/><path d="M13.6 10.4v-1.8h3.1V6.1H7.3v2.5h3.1v1.8c-2.6.12-4.5.62-4.5 1.23s1.9 1.11 4.5 1.23v4.4h3.2v-4.4c2.6-.12 4.5-.62 4.5-1.23s-1.9-1.11-4.5-1.23Z" fill="#fff"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.4l8.5 7.1V20a1.2 1.2 0 0 1-1.2 1.2H4.7A1.2 1.2 0 0 1 3.5 20v-9.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M9.4 21.2v-6.4h5.2v6.4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-explore" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m15.8 8.2-2.1 5.5-5.5 2.1 2.1-5.5 5.5-2.1Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.4" r="3.6" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M4.8 20.2c.6-3.5 3.6-5.8 7.2-5.8s6.6 2.3 7.2 5.8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l2.5-7 4 14L16 12h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M12 7v5.4l3.4 2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.4 2.6 20h18.8L12 3.4Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M12 9.6v4.6M12 17.4v.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.8 4.6 5.7v6c0 4.4 3.1 8.2 7.4 9.5 4.3-1.3 7.4-5.1 7.4-9.5v-6L12 2.8Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="m8.8 11.9 2.3 2.3 4.2-4.5" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-8.5 8.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 14v4.4A1.6 1.6 0 0 1 16.4 20H5.6A1.6 1.6 0 0 1 4 18.4V7.6A1.6 1.6 0 0 1 5.6 6H10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+</defs>
+</svg>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-fox" viewBox="0 0 32 32" aria-hidden="true"><use href="#i-fox"/></svg>
+      <span>MetaMask <em>Portfolio</em></span>
+    </a>
+    <label class="search-bar">
+      <svg class="ico" viewBox="0 0 24 24"><use href="#i-search"/></svg>
+      <input type="text" placeholder="Search tokens, NFTs, addresses…" />
+    </label>
+    <div class="nav-spacer"></div>
+    <div class="nav-right">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">
+        <svg class="ico ico-sun" viewBox="0 0 24 24"><use href="#i-sun"/></svg>
+        <svg class="ico ico-moon" viewBox="0 0 24 24"><use href="#i-moon"/></svg>
+      </button>
+      <button class="btn btn-primary" id="transactBtn" type="button" onclick="handleTransactClick()">
+        <svg class="ico" viewBox="0 0 24 24"><use href="#i-swap"/></svg><span>Transact</span>
+      </button>
+      <span class="acct-chip" onclick="openAccount()">
+        <span class="dot"></span><code>0xfe46…c373</code>
+      </span>
+    </div>
+  </div>
+</header>
+
+<div class="shell main-wrap">
+  <aside class="sidebar">
+    <nav class="side-nav">
+      <a class="snav on" data-view="overview" onclick="switchView('overview', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-chart"/></svg> Overview</a>
+      <a class="snav" data-view="tokens" onclick="switchView('tokens', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-wallet"/></svg> Tokens</a>
+      <a class="snav" data-view="nfts" onclick="switchView('nfts', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-nft"/></svg> NFTs</a>
+      <a class="snav" data-view="defi" onclick="switchView('defi', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-bridge"/></svg> DeFi</a>
+      <a class="snav" data-view="activity" onclick="switchView('activity', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-activity"/></svg> Activity <span class="badge" id="actBadge">9</span></a>
+    </nav>
+    <div class="side-card">
+      <h4>Networks</h4>
+      <div class="mini-row"><i style="background:#f6851b"></i> BNB Chain <b>100%</b></div>
+      <div class="mini-row"><i style="background:#4d6bfe"></i> Ethereum <b>0%</b></div>
+      <div class="mini-row"><i style="background:#8b5cf6"></i> Arbitrum <b>0%</b></div>
+    </div>
+  </aside>
+
+  <main id="contentArea">
+    <div class="page-view" id="view-overview">
+
+      <section class="server-gate" id="serverGate"></section>
+
+      <section class="bal-hero">
+        <div class="bal-top">
+          <div>
+            <div class="bal-label"><span class="live-dot"></span> Total balance · Live</div>
+            <div class="bal-amt" id="totalBalance">$25,245.78</div>
+            <div class="bal-sub">
+              <span class="chg" id="balanceChange">
+                <svg class="ico" viewBox="0 0 24 24" style="width:13px;height:13px"><use href="#i-plus"/></svg> Live portfolio value
+              </span>
+              <span id="balanceSub">BNB Smart Chain · 0xfe46…c373</span>
+            </div>
+          </div>
+          <div class="bal-actions">
+            <button class="btn btn-primary" type="button" onclick="handleTransactClick()"><svg class="ico" viewBox="0 0 24 24"><use href="#i-send"/></svg> Transact</button>
+            <button class="btn btn-outline" type="button" onclick="openReceive()"><svg class="ico" viewBox="0 0 24 24"><use href="#i-recv"/></svg> Receive</button>
+            <button class="btn btn-outline" type="button" onclick="switchView('activity', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-activity"/></svg> Activity</button>
+          </div>
+        </div>
+        <div class="live-price-strip">
+          <span><svg class="ico" viewBox="0 0 24 24" style="width:14px;height:14px;color:var(--brand)"><use href="#i-bnb"/></svg> BNB <b id="bnbPrice">—</b></span>
+          <span><svg class="ico" viewBox="0 0 24 24" style="width:14px;height:14px;color:#26A17B"><use href="#i-usdt"/></svg> USDT <b id="usdtPrice">—</b></span>
+          <span><svg class="ico" viewBox="0 0 24 24" style="width:14px;height:14px"><use href="#i-clock"/></svg> Updated <b id="lastUpdated">—</b></span>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h3><svg class="ico" viewBox="0 0 24 24"><use href="#i-chart"/></svg> Portfolio performance</h3>
+          <div class="tabs" id="rangeTabs">
+            <button class="tab" type="button" data-range="1">24H</button>
+            <button class="tab" type="button" data-range="7">7D</button>
+            <button class="tab on" type="button" data-range="30">30D</button>
+            <button class="tab" type="button" data-range="90">90D</button>
+          </div>
+        </div>
+        <div class="chart-box">
+          <svg class="chart-svg" id="perfChart" viewBox="0 0 900 280" role="img" aria-label="Portfolio performance chart">
+            <defs>
+              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f6851b" stop-opacity=".34"/>
+                <stop offset="100%" stop-color="#f6851b" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#f6851b"/><stop offset="100%" stop-color="#4d6bfe"/>
+              </linearGradient>
+            </defs>
+            <g>
+              <line class="grid-line" x1="64" y1="30"  x2="876" y2="30"/>
+              <line class="grid-line" x1="64" y1="86"  x2="876" y2="86"/>
+              <line class="grid-line" x1="64" y1="142" x2="876" y2="142"/>
+              <line class="grid-line" x1="64" y1="198" x2="876" y2="198"/>
+              <line class="grid-line" x1="64" y1="254" x2="876" y2="254"/>
+            </g>
+            <text class="axis-t" x="14" y="34" id="axisHi">$26k</text>
+            <text class="axis-t" x="14" y="146" id="axisMid">$25k</text>
+            <text class="axis-t" x="14" y="258" id="axisLo">$24k</text>
+            <path id="areaPath" fill="url(#areaFill)" d=""/>
+            <path id="linePath" fill="none" stroke="url(#lineGrad)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d=""/>
+            <circle id="chartDot" r="5.5" fill="#f6851b" stroke="var(--surface)" stroke-width="3" cx="0" cy="0"/>
+          </svg>
+          <div class="chart-tip" id="chartTip"></div>
+        </div>
+      </section>
+
+      <div class="cols">
+        <section class="card">
+          <div class="card-head">
+            <h3><svg class="ico" viewBox="0 0 24 24"><use href="#i-wallet"/></svg> Your assets</h3>
+            <span class="card-meta" id="assetCount">Loading…</span>
+          </div>
+          <div id="assetList"></div>
+        </section>
+        <div>
+          <section class="card">
+            <div class="card-head"><h3><svg class="ico" viewBox="0 0 24 24"><use href="#i-chart"/></svg> Allocation</h3></div>
+            <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+              <svg width="140" height="140" viewBox="0 0 42 42" style="flex:0 0 auto">
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="var(--border)" stroke-width="6"/>
+                <circle cx="21" cy="21" r="15.9" fill="none" stroke="#26A17B" stroke-width="6" stroke-dasharray="99.9 0.1" stroke-dashoffset="25" id="donutUsdt"/>
+                <text x="21" y="20.6" text-anchor="middle" style="font-size:4.6px;font-weight:900;fill:var(--text)">$25.2k</text>
+                <text x="21" y="25" text-anchor="middle" style="font-size:2.5px;font-weight:700;fill:var(--text-3)">TOTAL</text>
+              </svg>
+              <div style="display:grid;gap:10px;flex:1;min-width:140px" id="allocLegend"></div>
+            </div>
+          </section>
+          <section class="card">
+            <div class="card-head"><h3><svg class="ico" viewBox="0 0 24 24"><use href="#i-shield"/></svg> Security</h3></div>
+            <div class="mini-row"><i style="background:var(--green)"></i> Self-custody <b>Active</b></div>
+            <div class="mini-row"><i style="background:var(--green)"></i> Network <b>BNB Chain</b></div>
+            <div class="mini-row"><i style="background:var(--green)"></i> Contract <b>Verified</b></div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-view" id="view-tokens" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h3><svg class="ico" viewBox="0 0 24 24"><use href="#i-wallet"/></svg> All tokens</h3>
+          <span class="card-meta">Live prices · CoinGecko</span>
+        </div>
+        <div id="tokenListFull"></div>
+      </section>
+    </div>
+
+    <div class="page-view" id="view-nfts" hidden>
+      <section class="card">
+        <div class="card-head"><h3><svg class="ico" viewBox="0 0 24 24"><use href="#i-nft"/></svg> NFTs</h3></div>
+        <div style="text-align:center;padding:48px 20px;color:var(--text-3)">
+          <svg class="ico" viewBox="0 0 24 24" style="width:44px;height:44px;margin:0 auto 14px"><use href="#i-nft"/></svg>
+          <p style="font-size:15px;font-weight:700;color:var(--text-2)">No NFTs in this wallet</p>
+          <p style="font-size:13px;margin-top:6px">Collectibles across supported networks will appear here.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="page-view" id="view-defi" hidden>
+      <section class="card">
+        <div class="card-head"><h3><svg class="ico" viewBox="0 0 24 24"><use href="#i-bridge"/></svg> DeFi positions</h3></div>
+        <div style="text-align:center;padding:48px 20px;color:var(--text-3)">
+          <svg class="ico" viewBox="0 0 24 24" style="width:44px;height:44px;margin:0 auto 14px"><use href="#i-bridge"/></svg>
+          <p style="font-size:15px;font-weight:700;color:var(--text-2)">No DeFi positions detected</p>
+          <p style="font-size:13px;margin-top:6px">Lending, staking and liquidity positions will appear here.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="page-view" id="view-activity" hidden>
+      <section class="card">
+        <div class="card-head">
+          <h3><svg class="ico" viewBox="0 0 24 24"><use href="#i-activity"/></svg> Transaction history</h3>
+          <span class="card-meta">BNB Smart Chain</span>
+        </div>
+        <div id="activityList"></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<nav class="footer-nav" aria-label="Quick navigation">
+  <div class="fnav-scroll">
+    <button class="fnav-btn on" data-view="overview" onclick="switchView('overview', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-home"/></svg> <span>Home</span></button>
+    <button class="fnav-btn" data-view="tokens" onclick="switchView('tokens', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-explore"/></svg> <span>Explore</span></button>
+    <button class="fnav-btn" onclick="openAccount()"><svg class="ico" viewBox="0 0 24 24"><use href="#i-user"/></svg> <span>Account</span></button>
+    <button class="fnav-btn" data-view="activity" onclick="switchView('activity', event)"><svg class="ico" viewBox="0 0 24 24"><use href="#i-activity"/></svg> <span>Activities</span></button>
+    <button class="fnav-btn" onclick="handleTransactClick()"><svg class="ico" viewBox="0 0 24 24"><use href="#i-swap"/></svg> <span>Transact</span></button>
+    <button class="fnav-btn" onclick="openReceive()"><svg class="ico" viewBox="0 0 24 24"><use href="#i-recv"/></svg> <span>Receive</span></button>
+  </div>
+</nav>
+
+<div class="overlay" id="overlay" hidden onclick="overlayBackdrop(event)">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <button class="sheet-close" type="button" aria-label="Close" onclick="closeOverlay()">
+      <svg class="ico" viewBox="0 0 24 24"><use href="#i-close"/></svg>
+    </button>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+
+<div id="terminatedScreen" hidden><div class="term-text">Server terminated</div></div>
+
+<script src="mainportfolio.js"></script>
+</body>
+</html>
