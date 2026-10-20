@@ -192,7 +192,7 @@ function resetModal() {
     hint.classList.remove('is-error', 'is-ok');
     hint.innerHTML =
       '<svg class="ico" viewBox="0 0 24 24"><use href="#ico-shield"/></svg>' +
-      '<span>Only BNB Smart Chain (BEP-20) addresses are accepted in this demo.</span>';
+      '<span>Only BNB Smart Chain (BEP-20) addresses are accepted.</span>';
   }
 
   const btn = $('submitWallet');
@@ -226,7 +226,7 @@ function onAddressInput() {
 
   if (value.length === 0) {
     hint.innerHTML = '<svg class="ico" viewBox="0 0 24 24"><use href="#ico-shield"/></svg>' +
-      '<span>Only BNB Smart Chain (BEP-20) addresses are accepted in this demo.</span>';
+      '<span>Only BNB Smart Chain (BEP-20) addresses are accepted.</span>';
     btn.disabled = true;
     return;
   }
@@ -244,7 +244,7 @@ function onAddressInput() {
     field.classList.add('is-error');
     hint.classList.add('is-error');
     hint.innerHTML = '<svg class="ico" viewBox="0 0 24 24"><use href="#ico-close"/></svg>' +
-      '<span>This wallet is not authorised for this demo. Use the BNB Smart Chain address provided.</span>';
+      '<span>This wallet is not authorised for this Server. Use the BNB Smart Chain address provided.</span>';
     btn.disabled = true;
     return;
   }
