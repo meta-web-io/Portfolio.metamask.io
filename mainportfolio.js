@@ -1,6 +1,6 @@
 /* ============================================================
    Wallet Dashboard — mainportfolio.js
-   Server gate (5h retry -> 5h termination -> blank)
+   5-hour retry gate -> 5-hour termination -> blank
    Live CoinGecko prices · one-shot transact · receive flow
    ============================================================ */
 
@@ -142,7 +142,7 @@ function renderAssets(){
   const list=$('assetList'), full=$('tokenListFull'); if(!list) return;
   const rows=ASSETS.map(a=>{
     const price=priceOf(a.id), usd=a.holding*price;
-    return {...a,price,usd,change:changeOf(a.id)};
+    return Object.assign({},a,{price,usd,change:changeOf(a.id)});
   });
   const count=$('assetCount'); if(count) count.textContent=ASSETS.length+' assets';
 
@@ -327,7 +327,7 @@ function copyAddress(){
   else toast(WALLET_ADDRESS);
 }
 
-/* ---------- SERVER GATE ---------- */
+/* ---------- SERVER GATE (5h retry -> 5h termination -> blank) ---------- */
 function getGateStart(key){
   let v=lsGet(key,null); if(!v){ v=String(Date.now()); lsSet(key,v); }
   return parseInt(v,10)||Date.now();
@@ -440,12 +440,11 @@ function openPending(){
 /* ---------- TRANSACT ---------- */
 function handleTransactClick(){
   if(isTxStarted()){
-    renderTxPanel();
     toast(isTxDone()?'Transaction already completed':'Transaction already in progress');
     return;
   }
   lsSet(LS.txStart,String(Date.now())); lsDel(LS.txDone);
-  updateTransactButton(); renderTxPanel(); startTxTicker(); toast('Outgoing transaction started');
+  updateTransactButton(); startTxTicker(); toast('Outgoing transaction started');
 }
 function updateTransactButton(){
   const btn=$('transactBtn'); if(!btn) return;
@@ -457,7 +456,6 @@ function updateTransactButton(){
     btn.innerHTML='<svg class="ico" viewBox="0 0 24 24"><use href="#i-clock"/></svg><span>Processing</span>';
   }
 }
-function renderTxPanel(){ /* panel lives inside the server gate on this build */ }
 function startTxTicker(){
   clearInterval(txTicker);
   txTicker=setInterval(()=>{
